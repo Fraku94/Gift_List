@@ -51,7 +51,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public void onBindViewHolder(final CustomAdapter.ViewHolder holder, int position) {
         final MyDataGifts item = my_data_Gifts.get(position);
 
-// przycik do doawani prezentow zmeinai narazie sie ikonka trza zrobic obsluge bazy
+// przycik do doawani prezentow zmeinai narazie sie ikonka trzeba zrobic obsluge bazy
 
 
 
