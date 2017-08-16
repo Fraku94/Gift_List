@@ -1,14 +1,26 @@
 package com.example.giftlist.giftlist.Data;
 
 
-
 public class MyDataGifts {
 
-    private int id,cena;
-    private String nazwa,kategoria,opis ,image_link;
+    // Nie twórzcie tak nigdy zmiennych.
+    //    private int id,cena;
+    //    private String nazwa,kategoria,opis ,image_link;
+    // Tylko normalnie po kolei:
+    private int id;
+
+    private int cena;
+
+    private String nazwa;
+
+    private String kategoria;
+
+    private String opis;
+
+    private String image_link;
 
 
-    public MyDataGifts(int id, String nazwa, String kategoria ,int cena,String opis, String image_link) {
+    public MyDataGifts(int id, String nazwa, String kategoria, int cena, String opis, String image_link) {
         this.id = id;
         this.nazwa = nazwa;
         this.kategoria = kategoria;
@@ -43,11 +55,17 @@ public class MyDataGifts {
         this.kategoria = kategoria;
     }
 
-    public int getCena() {return cena;}
+    public int getCena() {
+        return cena;
+    }
 
-    public void setCena(int cena) {this.cena = cena;}
+    public void setCena(int cena) {
+        this.cena = cena;
+    }
 
-    public String getOpis() {return opis;}
+    public String getOpis() {
+        return opis;
+    }
 
     public void setOpis(String opis) {
         this.opis = opis;

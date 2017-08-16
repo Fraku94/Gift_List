@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.giftlist.giftlist.Data.User;
 import com.example.giftlist.giftlist.Fragments.OneFragment;
 import com.example.giftlist.giftlist.Fragments.ThreeFragment;
 import com.example.giftlist.giftlist.Fragments.TwoFragment;
@@ -28,12 +29,15 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
 
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    public static final String USER_ID = "user_id_key";
+    public static final String USER = "user_key";
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    private Long userId;
 
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,15 @@ public class MainActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        Intent intent = getIntent();
+        if(intent !=null) {
+            if(intent.hasExtra(USER_ID)) {
+                userId = intent.getLongExtra(USER_ID, 0L);
+            }
+            if(intent.hasExtra(USER)) {
+                user = (User) intent.getSerializableExtra(USER);
+            }
+        }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -136,10 +148,22 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setupViewPager(ViewPager viewPager) {
+        Bundle bundle = new Bundle();
+        bundle.putLong(USER_ID, userId);
+        bundle.putSerializable(USER, user);
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new OneFragment(), "Twoja lista życzeń");
-        adapter.addFragment(new TwoFragment(), "Listy twoich znajomych");
-        adapter.addFragment(new ThreeFragment(), "Popularne prezenty");
+        OneFragment oneFragment = new OneFragment();
+        oneFragment.setArguments(bundle);
+        adapter.addFragment(oneFragment, "Twoja lista życzeń");
+
+        TwoFragment twoFragment = new TwoFragment();
+        twoFragment.setArguments(bundle);
+        adapter.addFragment(twoFragment, "Listy twoich znajomych");
+
+        ThreeFragment theeFragmet = new ThreeFragment();
+        theeFragmet.setArguments(bundle);
+        adapter.addFragment(theeFragmet, "Popularne prezenty");
         viewPager.setAdapter(adapter);
     }
 

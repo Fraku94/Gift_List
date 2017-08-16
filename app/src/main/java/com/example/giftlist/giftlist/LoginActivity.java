@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.example.giftlist.giftlist.Data.User;
 import com.example.giftlist.giftlist.Request.LoginRequest;
 
 import org.json.JSONException;
@@ -61,10 +62,14 @@ public class LoginActivity extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
 
                             if (success) {
-
-
-//
+                                Long userId = jsonResponse.getLong("id");
+                                String username = jsonResponse.getString("username");
+                                User user = new User(userId, username);
                                 Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
+
+                                myIntent.putExtra(MainActivity.USER_ID, userId);
+                                myIntent.putExtra(MainActivity.USER, user);
+
                                 startActivity(myIntent);
                                 Toast.makeText(LoginActivity.this, "Zalogowano",
                                         Toast.LENGTH_SHORT).show();
