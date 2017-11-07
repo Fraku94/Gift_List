@@ -1,7 +1,6 @@
 package com.example.giftlist.giftlist.Fragments;
 
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.giftlist.giftlist.Adapter.CustomAdapter;
 import com.example.giftlist.giftlist.Data.MyDataGifts;
@@ -24,7 +22,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import okhttp3.OkHttpClient;
 
@@ -41,7 +38,6 @@ public class OneFragment extends Fragment {
     private List<MyDataGifts> data_list;
     private Long userId;
     private User user;
-
 
     public OneFragment(){
 
@@ -60,25 +56,22 @@ public class OneFragment extends Fragment {
                 user = (User) bundle.getSerializable(USER);
             }
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_one, container, false);
+        View view = inflater.inflate(R.layout.fragment_three, container, false);
 
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         data_list  = new ArrayList<>();
         load_data_from_server(0);
 
-        gridLayoutManager = new GridLayoutManager(getActivity(),2, GridLayoutManager.VERTICAL, false);
+        gridLayoutManager = new GridLayoutManager(getContext(),1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
 
         adapter = new CustomAdapter(getActivity(),data_list);
         recyclerView.setAdapter(adapter);
-
-        Toast.makeText(getContext(), String.format(Locale.getDefault(), "UserID: %d, UserName:%s", userId, user.getUsename()), Toast.LENGTH_SHORT).show();
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -102,14 +95,12 @@ public class OneFragment extends Fragment {
 
                 OkHttpClient client = new OkHttpClient();
                 okhttp3.Request request = new okhttp3.Request.Builder()
-                        .url("http://giftproject.cba.pl/showGifts.php?id="+integers[0])
+                        .url("http://giftproject.cba.pl/showYourGifts.php?id="+userId)
                         .build();
                 try {
                     okhttp3.Response response = client.newCall(request).execute();
 
                     JSONArray array = new JSONArray(response.body().string());
-
-
 
                     for (int i=0; i<array.length(); i++){
 
@@ -122,6 +113,7 @@ public class OneFragment extends Fragment {
                                 object.getInt("cena"),
                                 object.getString("opis"),
                                 object.getString("img"));
+
 
                         data_list.add(data);
                     }

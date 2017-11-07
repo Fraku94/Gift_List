@@ -17,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.giftlist.giftlist.Data.User;
 import com.example.giftlist.giftlist.Fragments.OneFragment;
@@ -37,12 +38,13 @@ public class MainActivity extends AppCompatActivity
 
     private Long userId;
 
-    private User user;
+    public User user,name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,8 +56,12 @@ public class MainActivity extends AppCompatActivity
             }
             if(intent.hasExtra(USER)) {
                 user = (User) intent.getSerializableExtra(USER);
+
             }
         }
+
+        final TextView MailView = (TextView) findViewById(R.id.MailView);
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -85,6 +91,13 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header=navigationView.getHeaderView(0);
+/*View view=navigationView.inflateHeaderView(R.layout.nav_header_main);*/
+
+
+
+
+
     }
 
 
@@ -114,7 +127,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }else if (id == R.id.action_add) {
-
+            
             return true;
 
         }
@@ -152,6 +165,7 @@ public class MainActivity extends AppCompatActivity
         bundle.putLong(USER_ID, userId);
         bundle.putSerializable(USER, user);
 
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         OneFragment oneFragment = new OneFragment();
         oneFragment.setArguments(bundle);
@@ -166,6 +180,8 @@ public class MainActivity extends AppCompatActivity
         adapter.addFragment(theeFragmet, "Popularne prezenty");
         viewPager.setAdapter(adapter);
     }
+
+
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();

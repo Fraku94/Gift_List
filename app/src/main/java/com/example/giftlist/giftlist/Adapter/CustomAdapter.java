@@ -83,7 +83,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             public void onClick(View view) {
                 if (isPressed) {
                     holder.like.setBackgroundResource(R.drawable.ic_favorite_black_24dp);
-                    Toast.makeText(mContext, "Teraz idz do sklepu kupuj", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, "Teraz idz do swoich prezentow", Toast.LENGTH_LONG).show();
                 }else {
                     holder.like.setBackgroundResource(R.drawable.ic_favorite_border_black_24dp);
                     Toast.makeText(mContext, "Jednak nie kupisz", Toast.LENGTH_LONG).show();

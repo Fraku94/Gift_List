@@ -66,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
                                 String username = jsonResponse.getString("username");
                                 User user = new User(userId, username);
                                 Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
-
                                 myIntent.putExtra(MainActivity.USER_ID, userId);
                                 myIntent.putExtra(MainActivity.USER, user);
 
