@@ -121,7 +121,7 @@ public class YoursGiftAdapter extends RecyclerView.Adapter<YoursGiftAdapter.View
 //
 //                DeleteRequest deleteRequest = new DeleteRequest(id_prezentu, id_uzytkownika, responseListener);
 //                RequestQueue queue = Volley.newRequestQueue(mContext);
-//                queue.add(deleteRequest);.
+//                queue.add(deleteRequest);
             }
         });
         holder.mView.setOnLongClickListener(new OnLongClickListener() {
