@@ -75,7 +75,7 @@
                 android:layout_below="@id/image"
                 android:layout_marginTop="@dimen/ic_album_overflow_margin_top"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_more"/>
+                android:src="@drawable/ic_sort_black_24dp"/>
 
             <ImageView
                 android:id="@+id/like"
@@ -85,21 +85,10 @@
                 android:layout_toLeftOf="@id/more"
                 android:layout_marginTop="@dimen/ic_album_overflow_margin_top"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_favorite_border_black_24dp"/>
+                android:src="@drawable/ic_remove_black_24dp"/>
 
 
         </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
 
     </android.support.v7.widget.CardView>
 

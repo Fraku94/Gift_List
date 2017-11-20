@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.giftlist.giftlist.Adapter.CustomAdapter;
+import com.example.giftlist.giftlist.Adapter.YoursGiftAdapter;
 import com.example.giftlist.giftlist.Data.MyDataGifts;
 import com.example.giftlist.giftlist.Data.User;
 import com.example.giftlist.giftlist.R;
@@ -34,7 +34,7 @@ public class OneFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private GridLayoutManager gridLayoutManager;
-    private CustomAdapter adapter;
+    private YoursGiftAdapter adapter;
     private List<MyDataGifts> data_list;
     private Long userId;
     private User user;
@@ -70,7 +70,7 @@ public class OneFragment extends Fragment {
         gridLayoutManager = new GridLayoutManager(getContext(),1, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        adapter = new CustomAdapter(getActivity(),data_list);
+        adapter = new YoursGiftAdapter(getActivity(),data_list);
         recyclerView.setAdapter(adapter);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

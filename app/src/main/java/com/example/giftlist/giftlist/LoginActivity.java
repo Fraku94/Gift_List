@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                                 myIntent.putExtra(MainActivity.USER, user);
 
                                 startActivity(myIntent);
-                                Toast.makeText(LoginActivity.this, "Zalogowano",
+                                Toast.makeText(LoginActivity.this, "Log in",
                                         Toast.LENGTH_SHORT).show();
 //
 //

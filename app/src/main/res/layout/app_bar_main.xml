@@ -38,13 +38,6 @@
     <include layout="@layout/content_main"
         android:id="@+id/include" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="68dp"
-        android:layout_height="72dp"
-        android:layout_gravity="top|left"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="bottom|right"
-       />
+
 
 </android.support.design.widget.CoordinatorLayout>
