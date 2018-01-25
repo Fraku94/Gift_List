@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                                     finish();
 
                                 } else {
-                                    if (jsonResponse.getString("status").equals("invaild"))
+                                    if (jsonResponse.getString("status").equals("USERNAME"))
                                         Toast.makeText(LoginActivity.this, "User Not Found",
                                                 Toast.LENGTH_SHORT).show();
                                     else {

@@ -66,19 +66,29 @@ public class RegisterActivity extends AppCompatActivity {
 
                     // Sukces walidacji
 
-                    RegisterRequest registerRequest = new RegisterRequest(email, username, password, new  Response.Listener<String>()
+                    RegisterRequest registerRequest = new RegisterRequest(email,username,password, new  Response.Listener<String>()
                     {
                         @Override
                     public void onResponse(String response) {
                             Log.i("Response", response);
                             progressDialog.dismiss();
-                            try{
-                        if (new JSONObject(response).getBoolean("success")) {
-                            Toast.makeText(RegisterActivity.this, "account create", Toast.LENGTH_SHORT).show();
-                            finish();
-                        } else
-                            Toast.makeText(RegisterActivity.this, "Wrong.Try again", Toast.LENGTH_SHORT).show();
-                    }catch(JSONException e){
+                            try {
+                                JSONObject jsonResponse = new JSONObject(response);
+
+                                if (jsonResponse.getBoolean("success")) {
+                                    Toast.makeText(RegisterActivity.this, "account create", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                } else {
+                                    if (jsonResponse.getString("status").equals("user exisist"))
+                                        Toast.makeText(RegisterActivity.this, "User  exist",
+                                                Toast.LENGTH_SHORT).show();
+                                 else{
+
+                                    Toast.makeText(RegisterActivity.this, "Wrong.Try again", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            }catch(JSONException e){
                         e.printStackTrace();
                     }
                 }
@@ -125,8 +135,8 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (string.length() > 10) {
             til_username.setError("max 10 ");
             return false;
-        } else if (string.length() < 6) {
-            til_username.setError("Min 6 characters");
+        } else if (string.length() < 3) {
+            til_username.setError("Min 3 characters");
             return false;
         }
         til_username.setErrorEnabled(false);
@@ -141,8 +151,8 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (string.length() > 10) {
             til_password.setError("max 10 characters");
             return false;
-        } else if (string.length() < 8) {
-            til_password.setError("minimum 8 characters");
+        } else if (string.length() < 3) {
+            til_password.setError("minimum 3 characters");
             return false;
         }
         til_password.setErrorEnabled(false);
