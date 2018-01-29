@@ -159,8 +159,8 @@ public class LoginActivity extends AppCompatActivity {
         } else if (string.length() > 10) {
             tlUsername.setError("max 10 ");
             return false;
-        } else if (string.length() < 6) {
-            tlUsername.setError("Min 6 characters");
+        } else if (string.length() < 3) {
+            tlUsername.setError("Min 3 characters");
             return false;
         }
         tlUsername.setErrorEnabled(false);
@@ -175,8 +175,8 @@ public class LoginActivity extends AppCompatActivity {
         } else if (string.length() > 10) {
             tlPassword.setError("max 10 characters");
             return false;
-        } else if (string.length() < 8) {
-        tlPassword.setError("minimum 8 characters");
+        } else if (string.length() < 3) {
+        tlPassword.setError("minimum 3 characters");
         return false;
         }
         tlPassword.setErrorEnabled(false);
