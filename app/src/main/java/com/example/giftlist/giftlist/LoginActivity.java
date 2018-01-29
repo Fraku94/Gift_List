@@ -1,7 +1,9 @@
 package com.example.giftlist.giftlist;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -22,7 +24,9 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
+import com.example.giftlist.giftlist.Adapter.DatabaseHandler;
 import com.example.giftlist.giftlist.Data.User;
+import com.example.giftlist.giftlist.Data.UsersDatabase;
 import com.example.giftlist.giftlist.Request.LoginRequest;
 
 import org.json.JSONException;
@@ -34,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     Button bLogin;
     TextView tvSign;
     String username, password;
-
+    DatabaseHandler db;
     RequestQueue requestQueue;
 //    RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
 //    final EditText etUsername = (EditText) findViewById(R.id.etUsername);
@@ -48,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         setTitle("Login");
         initialize();
-
+        db = new DatabaseHandler(this);
         requestQueue = Volley.newRequestQueue(LoginActivity.this);
         tvSign.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,18 +89,23 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 JSONObject jsonResponse = new JSONObject(response);
                                 if (jsonResponse.getBoolean("success")) {
-                                    Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
 
+                                    db.addContact(new UsersDatabase(Long.toString(jsonResponse.getLong("id")),
+                                            "waldek", "dasdasd","asa@sa.pl"));
+
+
+                                    Intent myIntent = new Intent(LoginActivity.this, MainActivity.class);
                                     Long userId = jsonResponse.getLong("id");
                                     String username = jsonResponse.getString("username");
                                     User user = new User(userId, username);
 // from server to  activity
                                     myIntent.putExtra(MainActivity.USER_ID, userId);
                                     myIntent.putExtra(MainActivity.USER, user);
-
                                     startActivity(myIntent);
-                                    Toast.makeText(LoginActivity.this, "Log in",
-                                            Toast.LENGTH_SHORT).show();
+
+
+
+                                    Toast.makeText(LoginActivity.this, "Log in", Toast.LENGTH_SHORT).show();
                                     finish();
 
                                 } else {

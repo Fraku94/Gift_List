@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/GiftList.iml" filepath="$PROJECT_DIR$/GiftList.iml" />
+      <module fileurl="file://C:\Users\Z710\StudioProjects\Gift_List\GiftList.iml" filepath="C:\Users\Z710\StudioProjects\Gift_List\GiftList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Gift_List.iml" filepath="$PROJECT_DIR$/.idea/Gift_List.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

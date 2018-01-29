@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity
 
             }
         }
-
+        Intent myIntent = new Intent(MainActivity.this, AddActivity.class);
+        myIntent.putExtras(getIntent().getExtras());
         final TextView MailView = (TextView) findViewById(R.id.MailView);
 
 

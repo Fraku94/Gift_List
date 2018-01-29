@@ -83,6 +83,7 @@ public class YoursGiftAdapter extends RecyclerView.Adapter<YoursGiftAdapter.View
             public void onClick(View view) {
 
                 Intent intent = new Intent(mContext, DetailActivity.class);
+                intent.putExtra("id_prezentu", item.getId_prezentu());
                 intent.putExtra("nazwa", item.getNazwa());
                 intent.putExtra("kategoria", item.getKategoria());
                 intent.putExtra("cena", item.getCena());

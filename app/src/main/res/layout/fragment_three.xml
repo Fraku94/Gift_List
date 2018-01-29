@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/tools"
-    android:background="#64BA17"
+    android:background="#B0C4DE"
     tools:context="com.example.ernes.gift.Fragments.ThreeFragment">
 
     <android.support.v7.widget.RecyclerView

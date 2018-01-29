@@ -53,9 +53,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
 // przycik do doawani prezentow zmeinai narazie sie ikonka trzeba zrobic obsluge bazy
 
-
-
-
         holder.description.setText(item.getNazwa());
         holder.cena.setText(Integer.toString(item.getCena()));
 
@@ -70,6 +67,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             public void onClick(View view) {
 
                 Intent intent = new Intent(mContext, DetailActivity.class);
+                intent.putExtra("id_prezentu", item.getId_prezentu());
                 intent.putExtra("nazwa", item.getNazwa());
                 intent.putExtra("kategoria", item.getKategoria());
                 intent.putExtra("cena", item.getCena());

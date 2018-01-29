@@ -7,7 +7,7 @@ public class MyDataGifts {
     //    private int id,cena;
     //    private String nazwa,kategoria,opis ,image_link;
     // Tylko normalnie po kolei:
-    private int id;
+    private int id_prezentu;
 
     private int cena;
 
@@ -19,9 +19,8 @@ public class MyDataGifts {
 
     private String image_link;
 
-
-    public MyDataGifts(int id, String nazwa, String kategoria, int cena, String opis, String image_link) {
-        this.id = id;
+    public MyDataGifts(int id_prezentu, String nazwa, String kategoria, int cena, String opis, String image_link) {
+        this.id_prezentu = id_prezentu;
         this.nazwa = nazwa;
         this.kategoria = kategoria;
         this.cena = cena;
@@ -30,13 +29,20 @@ public class MyDataGifts {
 
     }
 
-
-    public int getId() {
-        return id;
+    public int getId_prezentu() {
+        return id_prezentu;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_prezentu(int id_prezentu) {
+        this.id_prezentu = id_prezentu;
+    }
+
+    public int getCena() {
+        return cena;
+    }
+
+    public void setCena(int cena) {
+        this.cena = cena;
     }
 
     public String getNazwa() {
@@ -55,14 +61,6 @@ public class MyDataGifts {
         this.kategoria = kategoria;
     }
 
-    public int getCena() {
-        return cena;
-    }
-
-    public void setCena(int cena) {
-        this.cena = cena;
-    }
-
     public String getOpis() {
         return opis;
     }
@@ -78,5 +76,8 @@ public class MyDataGifts {
     public void setImage_link(String image_link) {
         this.image_link = image_link;
     }
+
+
+
 
 }

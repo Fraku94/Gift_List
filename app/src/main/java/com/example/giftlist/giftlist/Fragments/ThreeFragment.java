@@ -84,7 +84,7 @@ public class ThreeFragment extends Fragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 
                 if(gridLayoutManager.findLastCompletelyVisibleItemPosition() == data_list.size()-1){
-                    load_data_from_server(data_list.get(data_list.size()-1).getId());
+                    load_data_from_server(data_list.get(data_list.size()-1).getId_prezentu());
                 }
 
             }
