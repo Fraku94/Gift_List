@@ -57,7 +57,6 @@
             android:textSize="20sp"
             android:id="@+id/opis"/>
     </LinearLayout>
-
     <LinearLayout
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
